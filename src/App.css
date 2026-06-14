@@ -608,6 +608,10 @@
   cursor: pointer;
 }
 
+.mobile-only {
+  display: none !important;
+}
+
 /* ====================
    Responsive
    ==================== */
@@ -621,6 +625,13 @@
 }
 
 @media (max-width: 768px) {
+  .hidden-mobile {
+    display: none !important;
+  }
+  .mobile-only {
+    display: flex !important;
+  }
+
   .header-row-1, .header-row-3 {
     display: none;
   }
@@ -636,8 +647,5 @@
   .footer-grid {
     grid-template-columns: 1fr;
     gap: 32px;
-  }
-  .header-actions .hidden-mobile {
-    display: none;
   }
 }

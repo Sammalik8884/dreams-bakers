@@ -70,9 +70,11 @@ function App() {
           <div className="header-spacer hidden-mobile"></div>
 
           {/* Mobile hamburger */}
-          <button className="hamburger-btn mobile-only" style={{ display: 'none' }} onClick={() => setIsDrawerOpen(true)}>
-            <Menu size={24} />
-          </button>
+          <div className="mobile-only" style={{ flex: 1, alignItems: 'center' }}>
+            <button className="hamburger-btn" onClick={() => setIsDrawerOpen(true)}>
+              <Menu size={24} />
+            </button>
+          </div>
 
           <div className="logo-wrapper">
             <img src="/logo.jpeg" alt="Tehzeeb Bakers Clone" className="main-logo" />
