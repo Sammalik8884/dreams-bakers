@@ -116,7 +116,7 @@ function App() {
       <section className="hero-banner">
         {/* Placeholder for promotional image */}
         <div className="hero-placeholder">
-          <h1>Seasonal Fresh Mango Cake</h1>
+          <h1 style={{ textAlign: 'center', padding: '0 20px' }}>Welcome to Dream Sweets & Bakers</h1>
         </div>
       </section>
 
