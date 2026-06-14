@@ -9,6 +9,7 @@ import { Coffee, Cake, Pizza, Sandwich, Utensils, Gift, CupSoda } from 'lucide-r
 function App() {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [cartCount, setCartCount] = useState(0);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -93,7 +94,7 @@ function App() {
             </button>
             <button className="action-icon">
               <ShoppingBag size={20} />
-              <span className="cart-badge">0</span>
+              {cartCount > 0 && <span className="cart-badge">{cartCount}</span>}
             </button>
           </div>
         </div>
@@ -124,13 +125,18 @@ function App() {
         <h2 className="section-heading">CATEGORIES</h2>
         <div className="cat-scroll">
           {topCategories.map((cat, idx) => (
-            <a href={`#${cat.name}`} key={idx} className="category-item" style={{ textDecoration: 'none' }}>
+            <button 
+              key={idx} 
+              className="category-item" 
+              style={{ textDecoration: 'none', background: 'transparent', border: 'none' }}
+              onClick={() => document.getElementById(cat.name)?.scrollIntoView({ behavior: 'smooth' })}
+            >
               <div className="cat-icon">
                 {/* Silhouette placeholder */}
                 {cat.icon}
               </div>
               <span className="cat-label">{cat.name}</span>
-            </a>
+            </button>
           ))}
         </div>
       </section>
@@ -162,7 +168,13 @@ function App() {
                     </div>
                   )}
 
-                  <button className="btn-primary btn-add-cart" style={{ marginTop: item.prices ? '0' : 'auto' }}>ADD TO CART</button>
+                  <button 
+                    className="btn-primary btn-add-cart" 
+                    style={{ marginTop: item.prices ? '0' : 'auto' }}
+                    onClick={() => setCartCount(c => c + 1)}
+                  >
+                    ADD TO CART
+                  </button>
                 </div>
               </div>
             ))}
@@ -177,7 +189,7 @@ function App() {
         <p className="feature-body">
           Experience the ultimate indulgence with our signature Coffee Fudge Cake. Rich, moist chocolate cake layered with espresso-infused fudge frosting. Perfect for any celebration.
         </p>
-        <button className="btn-secondary">Order Now</button>
+        <button className="btn-secondary" onClick={() => document.getElementById('Cakes')?.scrollIntoView({ behavior: 'smooth' })}>Order Now</button>
       </section>
 
       {/* F. Gifting Section */}
@@ -187,15 +199,15 @@ function App() {
           Celebrate life's special moments with our elegantly crafted gift baskets and premium assorted boxes. The perfect treat for your loved ones.
         </p>
         <div className="gifting-grid">
-          <div className="gifting-card">
+          <div className="gifting-card" onClick={() => document.getElementById('Gifting')?.scrollIntoView({ behavior: 'smooth' })}>
             <div className="gifting-card-bg"></div>
             <span className="gifting-label">BASKET</span>
           </div>
-          <div className="gifting-card">
+          <div className="gifting-card" onClick={() => document.getElementById('Biscuits')?.scrollIntoView({ behavior: 'smooth' })}>
             <div className="gifting-card-bg"></div>
             <span className="gifting-label">BISCUITS</span>
           </div>
-          <div className="gifting-card">
+          <div className="gifting-card" onClick={() => document.getElementById('Cakes')?.scrollIntoView({ behavior: 'smooth' })}>
             <div className="gifting-card-bg"></div>
             <span className="gifting-label">CAKES</span>
           </div>
@@ -310,10 +322,18 @@ function App() {
         <h3 className="drawer-section-title">Categories</h3>
         <div>
           {topCategories.map(cat => (
-            <div key={cat.name} className="drawer-item">
-              <span>{cat.name}</span>
+            <button 
+              key={cat.name} 
+              className="drawer-item" 
+              style={{ width: '100%', background: 'transparent', border: 'none', borderBottom: '0.5px solid var(--color-border)' }}
+              onClick={() => {
+                setIsDrawerOpen(false);
+                setTimeout(() => document.getElementById(cat.name)?.scrollIntoView({ behavior: 'smooth' }), 300);
+              }}
+            >
+              <span style={{ fontSize: '14px', fontWeight: '500' }}>{cat.name}</span>
               <ChevronRight size={16} color="#999" />
-            </div>
+            </button>
           ))}
         </div>
 
