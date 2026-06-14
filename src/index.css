@@ -1,0 +1,110 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap');
+
+:root {
+  /* Brand Identity */
+  --color-primary: #2A5A3B; /* Deep forest green */
+  --color-accent: #C8A84B; /* Warm gold / mustard */
+  --color-bg-light: #FAF8F4; /* Off-white / cream */
+  --color-bg-dark: #1A1A1A; /* Near-black */
+  --color-text-primary: #1C1C1C; /* Dark charcoal */
+  --color-text-secondary: #6B6B6B; /* Medium gray */
+  --color-text-on-dark: #FFFFFF; /* White */
+  --color-border: #E5E5E5; /* Light gray */
+  --color-cat-bg: #F2F0EB; /* Category icon bg */
+  --color-cat-hover: #E8F0EB; /* Category icon hover */
+
+  /* Typography */
+  --font-serif: 'Playfair Display', 'Cormorant Garamond', serif;
+  --font-sans: 'Inter', sans-serif;
+
+  /* Global Layout */
+  --max-width: 1280px;
+  --section-padding: 80px;
+  --grid-gap: 24px;
+  --radius-btn: 4px;
+  --radius-card: 8px;
+  --radius-circle: 50%;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: #FFFFFF;
+  color: var(--color-text-primary);
+  line-height: 1.7;
+  font-size: 15px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-serif);
+  color: var(--color-text-primary);
+  line-height: 1.2;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul {
+  list-style: none;
+}
+
+/* Primary Button (CTA) */
+.btn-primary {
+  background: var(--color-accent);
+  color: var(--color-text-primary);
+  border: none;
+  border-radius: var(--radius-btn);
+  padding: 12px 28px;
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  cursor: pointer;
+  transition: background 0.2s ease;
+  font-family: var(--font-sans);
+}
+
+.btn-primary:hover {
+  background: #B8963A;
+}
+
+/* Secondary / Outlined Button */
+.btn-secondary {
+  background: transparent;
+  color: var(--color-text-on-dark);
+  border: 1.5px solid var(--color-text-on-dark);
+  border-radius: var(--radius-btn);
+  padding: 11px 26px;
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: var(--font-sans);
+}
+
+.btn-secondary:hover {
+  background: var(--color-text-on-dark);
+  color: var(--color-text-primary);
+}
+
+/* Base Nav Link */
+.nav-link {
+  color: var(--color-text-primary);
+  font-size: 14px;
+  font-weight: 500;
+  padding: 0 12px;
+  transition: color 0.2s ease;
+  cursor: pointer;
+}
+
+.nav-link:hover {
+  color: var(--color-primary);
+}
