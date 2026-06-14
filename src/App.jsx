@@ -21,9 +21,9 @@ function App() {
   const topCategories = [
     { name: "Bread", icon: <Utensils /> },
     { name: "Cakes", icon: <Cake /> },
-    { name: "Snack", icon: <Coffee /> },
+    { name: "Snacks", icon: <Coffee /> },
     { name: "Pizza", icon: <Pizza /> },
-    { name: "Biscuit", icon: <Coffee /> },
+    { name: "Biscuits", icon: <Coffee /> },
     { name: "Pastry", icon: <Cake /> },
     { name: "Donut", icon: <Coffee /> },
     { name: "Salad", icon: <Utensils /> },
@@ -31,10 +31,10 @@ function App() {
     { name: "Burger", icon: <Utensils /> },
     { name: "Nimko", icon: <Coffee /> },
     { name: "Puff", icon: <Coffee /> },
-    { name: "Gifting", icon: <Gift /> },
-    { name: "Kanas Ketchup", icon: <Utensils /> },
-    { name: "Packed Items", icon: <Gift /> },
-    { name: "Beverages", icon: <CupSoda /> }
+    { name: "Shawarma", icon: <Utensils /> },
+    { name: "Milk Shake", icon: <CupSoda /> },
+    { name: "Discounted Deals", icon: <Gift /> },
+    { name: "Fresh Juice", icon: <CupSoda /> }
   ];
 
   return (
@@ -124,35 +124,51 @@ function App() {
         <h2 className="section-heading">CATEGORIES</h2>
         <div className="cat-scroll">
           {topCategories.map((cat, idx) => (
-            <div key={idx} className="category-item">
+            <a href={`#${cat.name}`} key={idx} className="category-item" style={{ textDecoration: 'none' }}>
               <div className="cat-icon">
                 {/* Silhouette placeholder */}
                 {cat.icon}
               </div>
               <span className="cat-label">{cat.name}</span>
-            </div>
+            </a>
           ))}
         </div>
       </section>
 
-      {/* Product List Example (mapped from data) */}
-      <section className="container" style={{ paddingBottom: '80px' }}>
-        <h2 className="section-heading">PIZZA</h2>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(240px, 1fr))', gap: '24px' }}>
-          {menuData['Pizza']?.map((item, idx) => (
-            <div key={idx} className="product-card">
-              <div className="product-img-wrapper">
-                <Pizza size={48} color="#C8A84B" />
+      {/* Product List Mapped from data.js */}
+      {Object.keys(menuData).map(categoryName => (
+        <section key={categoryName} id={categoryName} className="container" style={{ paddingBottom: '80px', paddingTop: '40px' }}>
+          <h2 className="section-heading" style={{ fontSize: '28px', marginBottom: '24px' }}>{categoryName}</h2>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(240px, 1fr))', gap: '24px' }}>
+            {menuData[categoryName].map((item, idx) => (
+              <div key={idx} className="product-card">
+                <div className="product-img-wrapper">
+                  <span style={{ fontSize: '48px', color: '#C8A84B', fontWeight: 'bold' }}>{categoryName[0]}</span>
+                </div>
+                <div className="product-info">
+                  <h3 className="product-name">{item.name}</h3>
+                  {item.description && <p style={{ fontSize: '12px', color: 'var(--color-text-secondary)', marginBottom: '8px' }}>{item.description}</p>}
+                  
+                  {item.price && <p className="product-price">Rs. {item.price}</p>}
+                  
+                  {item.prices && (
+                    <div style={{ marginBottom: '16px' }}>
+                      {Object.entries(item.prices).map(([size, price]) => (
+                        <div key={size} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '4px' }}>
+                          <span style={{ fontSize: '13px', color: 'var(--color-text-secondary)' }}>{size}</span>
+                          <span style={{ fontSize: '14px', fontWeight: 'bold', color: 'var(--color-primary)' }}>Rs. {price}</span>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+
+                  <button className="btn-primary btn-add-cart" style={{ marginTop: item.prices ? '0' : 'auto' }}>ADD TO CART</button>
+                </div>
               </div>
-              <div className="product-info">
-                <h3 className="product-name">{item.name}</h3>
-                <p className="product-price">Rs. {item.prices?.Small || item.prices?.Medium || item.price}</p>
-                <button className="btn-primary btn-add-cart">ADD TO CART</button>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
+            ))}
+          </div>
+        </section>
+      ))}
 
       {/* E. Feature Section — Coffee Fudge Cake */}
       <section className="feature-section">
