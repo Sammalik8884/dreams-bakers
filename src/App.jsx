@@ -55,12 +55,12 @@ function App() {
               <Menu size={20} />
             </button>
             <div className="quick-links">
-              <a href="#" className="quick-link">Pizza</a>
-              <a href="#" className="quick-link">Cakes</a>
-              <a href="#" className="quick-link">Biscuits</a>
-              <a href="#" className="quick-link">Pastry</a>
-              <a href="#" className="quick-link">Bread</a>
-              <a href="#" className="quick-link">Puffs</a>
+              <a href="#Pizza" className="quick-link" onClick={(e) => { e.preventDefault(); document.getElementById('Pizza')?.scrollIntoView({ behavior: 'smooth' }); }}>Pizza</a>
+              <a href="#Cakes" className="quick-link" onClick={(e) => { e.preventDefault(); document.getElementById('Cakes')?.scrollIntoView({ behavior: 'smooth' }); }}>Cakes</a>
+              <a href="#Biscuits" className="quick-link" onClick={(e) => { e.preventDefault(); document.getElementById('Biscuits')?.scrollIntoView({ behavior: 'smooth' }); }}>Biscuits</a>
+              <a href="#Pastry" className="quick-link" onClick={(e) => { e.preventDefault(); document.getElementById('Pastry')?.scrollIntoView({ behavior: 'smooth' }); }}>Pastry</a>
+              <a href="#Bread" className="quick-link" onClick={(e) => { e.preventDefault(); document.getElementById('Bread')?.scrollIntoView({ behavior: 'smooth' }); }}>Bread</a>
+              <a href="#Puff" className="quick-link" onClick={(e) => { e.preventDefault(); document.getElementById('Puff')?.scrollIntoView({ behavior: 'smooth' }); }}>Puffs</a>
             </div>
           </div>
         </div>
@@ -102,13 +102,13 @@ function App() {
         {/* Row 3: Secondary Nav */}
         <div className="header-row-3 hidden-mobile">
           <a href="#" className="nav-link">What's new</a>
-          <a href="#" className="nav-link">Best sellers</a>
-          <a href="#" className="nav-link">Quick order</a>
+          <a href="#Discounted Deals" className="nav-link" onClick={(e) => { e.preventDefault(); document.getElementById('Discounted Deals')?.scrollIntoView({ behavior: 'smooth' }); }}>Best sellers</a>
+          <a href="#Discounted Deals" className="nav-link" onClick={(e) => { e.preventDefault(); document.getElementById('Discounted Deals')?.scrollIntoView({ behavior: 'smooth' }); }}>Quick order</a>
           <a href="#" className="nav-link">Contact</a>
-          <a href="#" className="nav-link">Gifting</a>
-          <a href="#" className="nav-link">Deliver Nationwide</a>
-          <a href="#" className="nav-link">Snacks</a>
-          <a href="#" className="nav-link">Salad</a>
+          <a href="#Gifting" className="nav-link" onClick={(e) => { e.preventDefault(); document.getElementById('Gifting')?.scrollIntoView({ behavior: 'smooth' }); }}>Gifting</a>
+          <a href="#Pizza" className="nav-link" onClick={(e) => { e.preventDefault(); document.getElementById('Pizza')?.scrollIntoView({ behavior: 'smooth' }); }}>Deliver Nationwide</a>
+          <a href="#Snacks" className="nav-link" onClick={(e) => { e.preventDefault(); document.getElementById('Snacks')?.scrollIntoView({ behavior: 'smooth' }); }}>Snacks</a>
+          <a href="#Salad" className="nav-link" onClick={(e) => { e.preventDefault(); document.getElementById('Salad')?.scrollIntoView({ behavior: 'smooth' }); }}>Salad</a>
         </div>
       </header>
 
@@ -328,7 +328,7 @@ function App() {
               style={{ width: '100%', background: 'transparent', border: 'none', borderBottom: '0.5px solid var(--color-border)' }}
               onClick={() => {
                 setIsDrawerOpen(false);
-                setTimeout(() => document.getElementById(cat.name)?.scrollIntoView({ behavior: 'smooth' }), 300);
+                document.getElementById(cat.name)?.scrollIntoView({ behavior: 'smooth' });
               }}
             >
               <span style={{ fontSize: '14px', fontWeight: '500' }}>{cat.name}</span>
